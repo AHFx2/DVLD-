@@ -1,17 +1,23 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\",
+  "WorkspaceRootPath": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|f:\\coding\\projects\\driving \u0026 vehicle license department (dvld)\\dvld(driving and vehcles departments)\\screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D29EE692-0D64-4462-B864-818647CD1AD9}|..\\DVLD_Logic\\DVLD_Logic.csproj|f:\\coding\\projects\\dvld\\dvldrepo\\dvld_logic\\clsapplicationtyeslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D29EE692-0D64-4462-B864-818647CD1AD9}|..\\DVLD_Logic\\DVLD_Logic.csproj|f:\\coding\\projects\\dvld\\dvldrepo\\dvld_logic\\clsapplicationlogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|f:\\coding\\projects\\dvld\\dvldrepo\\dvld(driving and vehcles departments)\\screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|solutionrelative:screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\clsgloble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\clsgloble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|solutionrelative:clsgloble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|solutionrelative:screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -22,11 +28,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clsApplicationTyesLogic.cs",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD_Logic\\clsApplicationTyesLogic.cs",
+              "RelativeDocumentMoniker": "..\\DVLD_Logic\\clsApplicationTyesLogic.cs",
+              "ToolTip": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD_Logic\\clsApplicationTyesLogic.cs",
+              "RelativeToolTip": "..\\DVLD_Logic\\clsApplicationTyesLogic.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAzwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T06:53:49.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsApplicationLogic.cs",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD_Logic\\clsApplicationLogic.cs",
+              "RelativeDocumentMoniker": "..\\DVLD_Logic\\clsApplicationLogic.cs",
+              "ToolTip": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD_Logic\\clsApplicationLogic.cs",
+              "RelativeToolTip": "..\\DVLD_Logic\\clsApplicationLogic.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T06:53:23.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
             },
             {
               "$type": "Bookmark",
@@ -34,11 +70,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "clsGloble.cs",
-              "DocumentMoniker": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\clsGloble.cs",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\clsGloble.cs",
               "RelativeDocumentMoniker": "clsGloble.cs",
-              "ToolTip": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\clsGloble.cs",
+              "ToolTip": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\clsGloble.cs",
               "RelativeToolTip": "clsGloble.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAACAAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -46,25 +82,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "frmLoginScreen.cs",
-              "DocumentMoniker": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
               "RelativeDocumentMoniker": "Screens\\frmLoginScreen.cs",
-              "ToolTip": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
+              "ToolTip": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
               "RelativeToolTip": "Screens\\frmLoginScreen.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAA6wBsAAAAdAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-05T06:25:01.593Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "frmLoginScreen.cs [Design]",
-              "DocumentMoniker": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
               "RelativeDocumentMoniker": "Screens\\frmLoginScreen.cs",
               "ToolTip": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs [Design]",
-              "RelativeToolTip": "Screens\\frmLoginScreen.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-05T06:21:33.456Z"
             }

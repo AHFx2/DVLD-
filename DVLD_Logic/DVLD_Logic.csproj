@@ -60,7 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\DVLD_DataAccess.csproj">
+    <ProjectReference Include="..\DVLD_DataAcce\DVLD_DataAccess.csproj">
       <Project>{b6b3d960-c6fa-4491-9bbc-4758b9831e3b}</Project>
       <Name>DVLD_DataAccess</Name>
     </ProjectReference>
