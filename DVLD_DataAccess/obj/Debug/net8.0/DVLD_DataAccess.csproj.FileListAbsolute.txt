@@ -1,0 +1,11 @@
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\bin\Debug\net8.0\DVLD_DataAccess.deps.json
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\bin\Debug\net8.0\DVLD_DataAccess.dll
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\bin\Debug\net8.0\DVLD_DataAccess.pdb
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\DVLD_DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\DVLD_DataAccess.AssemblyInfoInputs.cache
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\DVLD_DataAccess.AssemblyInfo.cs
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\DVLD_DataAccess.csproj.CoreCompileInputs.cache
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\DVLD_DataAccess.dll
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\refint\DVLD_DataAccess.dll
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\DVLD_DataAccess.pdb
+F:\coding\Projects\Driving & Vehicle License Department (DVLD)\DVLD_DataAccess\obj\Debug\net8.0\ref\DVLD_DataAccess.dll
