@@ -18,12 +18,14 @@ A comprehensive system for managing vehicle licenses, designed to streamline the
 - **SQL Server:** For managing vehicle and license data.  
 - **Three-Tier Architecture:** To ensure a clear separation of concerns across Data Access, Business Logic, and User Interface layers.  
 
+
 ## 🚀 Getting Started  
 ### Prerequisites  
 - .NET Framework or .NET Core.  
 - SQL Server installed and running.  
 
 ### Installation  
-1. Clone the repository:  
+1. be sure to have guna library and valid license
+2. Clone the repository:  
   ```bash
-   git clone https://github.com/yourusername/DVLD-Licensing-System.git
+     https://github.com/AHFx2/DVLD-.git
