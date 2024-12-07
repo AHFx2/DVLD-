@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\",
+<<<<<<< HEAD
   "Documents": [],
+=======
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|f:\\coding\\projects\\dvld\\dvldrepo\\dvld(driving and vehcles departments)\\screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|solutionrelative:screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\clsgloble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|solutionrelative:clsgloble.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{08628009-01B1-4DAA-BE7C-3C9D00762B98}|DVLD_Interface.csproj|solutionrelative:screens\\frmloginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+>>>>>>> aziz
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,6 +35,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsGloble.cs",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\clsGloble.cs",
+              "RelativeDocumentMoniker": "clsGloble.cs",
+              "ToolTip": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\clsGloble.cs",
+              "RelativeToolTip": "clsGloble.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACAAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T06:25:15.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmLoginScreen.cs",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
+              "RelativeDocumentMoniker": "Screens\\frmLoginScreen.cs",
+              "ToolTip": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
+              "RelativeToolTip": "Screens\\frmLoginScreen.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAiwBsAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T06:25:01.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmLoginScreen.cs [Design]",
+              "DocumentMoniker": "F:\\coding\\Projects\\DVLD\\DVLDRepo\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs",
+              "RelativeDocumentMoniker": "Screens\\frmLoginScreen.cs",
+              "ToolTip": "F:\\coding\\Projects\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\Driving \u0026 Vehicle License Department (DVLD)\\DVLD(Driving and Vehcles Departments)\\Screens\\frmLoginScreen.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T06:21:33.456Z"
+>>>>>>> aziz
             }
           ]
         },
