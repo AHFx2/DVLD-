@@ -13,7 +13,7 @@ namespace DVLD_DataAccess
 
         public static bool IsLicenseDetained(int  licenseId)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"select 1 from DetainedLicenses
                         where DetainedLicenses.LicenseID = @ID and DetainedLicenses.IsReleased = 0";
@@ -39,7 +39,7 @@ namespace DVLD_DataAccess
 
         public static int DetaineLicense(int LicenseID, double Fees, int usercreateIt, string notes)
         {
-            SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DataSettings.ConnectionString);
 
             string Query = @"INSERT INTO [dbo].[DetainedLicenses]
                            ([LicenseID]
@@ -78,7 +78,7 @@ namespace DVLD_DataAccess
         }
         public static bool ReleaseDetainedLicense(int DetainID, int usercreateIt, int ReleaseAppID)
         {
-            SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DataSettings.ConnectionString);
 
             string Query = @"UPDATE [dbo].[DetainedLicenses]
                             SET 
@@ -112,7 +112,7 @@ namespace DVLD_DataAccess
         }
         public static int GetLicenseFine(int LicenseID)
         {
-            SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DataSettings.ConnectionString);
 
             string Query = @"select DetainedLicenses.FineFees from DetainedLicenses
                         where LicenseID = @LicenseID";
@@ -143,7 +143,7 @@ namespace DVLD_DataAccess
         public static DataTable GetDetainedInfo(int LicenseeID) {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DataSettings.ConnectionString);
 
             string Query = @"select * from DetainedLicenses
                         where LicenseID = @LicenseID and IsReleased = 0";
@@ -175,7 +175,7 @@ namespace DVLD_DataAccess
         {
 
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DataSettings.ConnectionString);
 
             string Query = @"select * from DetainedLicenses_View
                         ";

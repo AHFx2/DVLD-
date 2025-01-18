@@ -15,8 +15,8 @@ namespace DVLD_Logic
         public string ClassDescription { get; set; }
         public byte MinmumAllowedAge { get; set; }
         public byte DefaultValidityLength { get; set; }
-        public int Fees { get; set; }
-        public clsLicenseClassLogic(int id , string ClassName, string ClassDescription, byte MinAge, byte Length, int Fees)
+        public float Fees { get; set; }
+        public clsLicenseClassLogic(int id , string ClassName, string ClassDescription, byte MinAge, byte Length, float Fees)
         {
             this.ID = id;
             this.ClassName = ClassName;
@@ -29,7 +29,7 @@ namespace DVLD_Logic
 
         public static DataTable GetLicenesClass()
         {
-            return DVLD_DataAccess.clsLicenseClass.GetLicenseClasses();
+            return DVLD_DataAccess.clsLicenseClassData.GetAllLicenseClasses();
         }
 
         public static clsLicenseClassLogic GetLicenseByID(int id)
@@ -38,8 +38,8 @@ namespace DVLD_Logic
             string ClassDescription = string.Empty;
             byte MinAge = 0;
             byte Length = 0;
-            int Fees = 0;
-            if (DVLD_DataAccess.clsLicenseClass.GetLicenseByID(id, ref ClassName, ref ClassDescription, ref MinAge, ref Length, ref Fees))
+            float Fees = 0;
+            if (DVLD_DataAccess.clsLicenseClassData.GetLicenseClassInfoByID(id, ref ClassName, ref ClassDescription, ref MinAge, ref Length, ref Fees))
             {
                 return new clsLicenseClassLogic(id, ClassName, ClassDescription, MinAge, Length, Fees);
             }
@@ -54,8 +54,8 @@ namespace DVLD_Logic
             string ClassDescription = string.Empty;
             byte MinAge = 0;
             byte Length = 0;
-            int Fees = 0;
-            if (DVLD_DataAccess.clsLicenseClass.GetLicenseByName(ref ID, ClassName, ref ClassDescription, ref MinAge, ref Length, ref Fees))
+            float Fees = 0;
+            if (DVLD_DataAccess.clsLicenseClassData.GetLicenseClassInfoByClassName(ClassName, ref ID, ref ClassDescription, ref MinAge, ref Length, ref Fees))
             {
                 return new clsLicenseClassLogic(ID, ClassName, ClassDescription, MinAge, Length, Fees);
             }

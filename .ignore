@@ -8,3 +8,5 @@ obj/
 
 # Ignore log files
 *.log
+
+*.vs/

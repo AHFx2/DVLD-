@@ -14,7 +14,7 @@ namespace DVLD_DataAccess
      
         public static int AddTest(int AppoitmentId, byte TestResult, string Notes, int UserID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"
                             INSERT INTO [dbo].[Tests]
@@ -62,7 +62,7 @@ namespace DVLD_DataAccess
         {
 
             {
-                SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+                SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
                 string Qerury = @"SELECT   1
                         FROM         Tests INNER JOIN

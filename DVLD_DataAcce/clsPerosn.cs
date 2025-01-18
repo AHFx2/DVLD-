@@ -13,14 +13,6 @@ namespace DVLD_DataAccess
     static public class clsPersonData
     {
 
-        // making the crud
-        /*
-            create
-            read
-            update 
-            delete
-         */
-
 
         public static bool GetPersonByID(int ID, ref string NationalNo, ref string FirstName, ref string SecondName, ref string ThirdName, ref string LastName,
                                     ref DateTime BirthDate, ref byte Gendor, ref string Address, ref string Phone, ref string Email, ref byte NationalityCountryID, ref string ImagePath)
@@ -28,11 +20,11 @@ namespace DVLD_DataAccess
 
             string Query = "select * from People where People.PersonID = @ID;";
 
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             SqlCommand command = new SqlCommand(Query, connection);
 
-            bool isFaild = false;
+            bool IsSuccess = false;
 
             command.Parameters.AddWithValue("@ID", ID);
 
@@ -46,25 +38,32 @@ namespace DVLD_DataAccess
                 {
                     NationalNo = reader["NationalNo"].ToString();
                     FirstName =  reader["FirstName"].ToString();
-                    SecondName = reader["SecondName"].ToString();
+
+                    //Handle Null String
+                    SecondName = DataSettings.HandleNUllStrings(reader["SecondName"]);
                     ThirdName =  reader["ThirdName"].ToString();
                     LastName =   reader["LastName"].ToString();
                     BirthDate = (DateTime)reader["DateOfBirth"];
                     Address = reader["Address"].ToString();
                     Gendor = (byte)reader["Gendor"];
                     Phone = reader["Phone"].ToString();
-                    Email = reader["Email"].ToString();
-                    ImagePath = reader["ImagePath"].ToString();
+
+                    //Handle Null String
+                    Email = DataSettings.HandleNUllStrings(reader["Email"]);
+
+                    //Handle Null String
+                    ImagePath = DataSettings.HandleNUllStrings(reader["ImagePath"]);
+
                     NationalityCountryID = Convert.ToByte(reader["NationalityCountryID"]);
-                    isFaild = true;
+                    IsSuccess = true;
                 }
                 reader.Close();
             }
 
-            catch { return isFaild; }
+            catch { return IsSuccess; }
 
             finally { connection.Close(); }
-            return isFaild;
+            return IsSuccess;
         }
 
 
@@ -74,11 +73,11 @@ namespace DVLD_DataAccess
 
             string Query = "select * from People where People.NationalNo = @NatID;";
 
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             SqlCommand command = new SqlCommand(Query, connection);
 
-            bool isFaild = false;
+            bool IsSuccess = false;
 
             command.Parameters.AddWithValue("@NatID", NationalNo);
 
@@ -91,32 +90,42 @@ namespace DVLD_DataAccess
                 if (reader.Read())
                 {
                     NationalNo = reader["NationalNo"].ToString();
+                    
                     ID = Convert.ToInt16(reader["PersonID"]);
+                    
                     FirstName = reader["FirstName"].ToString();
-                    SecondName = reader["SecondName"].ToString();
+                    
+                    //Handle Null String
+                    SecondName = DataSettings.HandleNUllStrings(reader["SecondName"]);
+                    
                     ThirdName = reader["ThirdName"].ToString();
+                    
                     LastName = reader["LastName"].ToString();
                     BirthDate = (DateTime)reader["DateOfBirth"];
                     Address = reader["Address"].ToString();
                     Gendor = (byte)reader["Gendor"];
                     Phone = reader["Phone"].ToString();
-                    Email = reader["Email"].ToString();
-                    ImagePath = reader["ImagePath"].ToString();
+
+                    //Handle Null String
+                    Email = DataSettings.HandleNUllStrings(reader["Email"]);
+
+                    //Handle Null String
+                    ImagePath = DataSettings.HandleNUllStrings(reader["ImagePath"]);
                     NationalityCountryID = Convert.ToByte(reader["NationalityCountryID"]);
-                    isFaild = true;
+                    IsSuccess = true;
                 }
             }
 
-            catch { return isFaild; }
+            catch { return IsSuccess; }
 
             finally { connection.Close(); }
-            return isFaild;
+            return IsSuccess;
         }
 
         public static int AddPerson(string NationalNo, string Firstname, string Secondname, string Thirdname, string Lastname,
                                 DateTime BirthDate, byte Gendor, string Address, string Phone, string Email, byte NationlityCountryID, string ImagePath)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"INSERT INTO People
                              VALUES
@@ -128,17 +137,23 @@ namespace DVLD_DataAccess
 
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
             command.Parameters.AddWithValue("@FirstName", Firstname);
-            command.Parameters.AddWithValue("@SecondName", Secondname);
+            
+            //Handle Empty String
+            command.Parameters.AddWithValue("@SecondName", DataSettings.HandleEmptyStrings(Secondname));
             command.Parameters.AddWithValue("@ThirdName", Thirdname);
             command.Parameters.AddWithValue("@LastName", Lastname);
             command.Parameters.AddWithValue("@DateOfBirth", BirthDate);
             command.Parameters.AddWithValue("@Gendor", Gendor);
             command.Parameters.AddWithValue("@Address", Address);
             command.Parameters.AddWithValue("@Phone", Phone);
-            command.Parameters.AddWithValue("@Email", Email);
+            
+            //Handle Empty String
+            command.Parameters.AddWithValue("@Email", DataSettings.HandleEmptyStrings(Email));
+            
             command.Parameters.AddWithValue("@NationalityCountryID", NationlityCountryID);
-
-            command.Parameters.AddWithValue("@ImagePath", (ImagePath == null) ? (object)DBNull.Value : ImagePath);
+            
+            //Handle Empty String
+            command.Parameters.AddWithValue("@ImagePath", DataSettings.HandleEmptyStrings(ImagePath));
             int PersonID = -1;
             try
             {
@@ -161,7 +176,7 @@ namespace DVLD_DataAccess
         static public bool UpdatePerson(int ID, string NationalNo, string Firstname, string Secondname, string Thirdname, string Lastname,
                                 DateTime BirthDate, byte Gendor, string Address, string Phone, string Email, byte NationlityCountryID, string ImagePath)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"
                             UPDATE [dbo].[People]
@@ -184,16 +199,24 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@ID", ID);
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
             command.Parameters.AddWithValue("@FirstName", Firstname);
-            command.Parameters.AddWithValue("@SecondName", Secondname);
+
+            //Handle Empty String
+            command.Parameters.AddWithValue("@SecondName", DataSettings.HandleEmptyStrings(Secondname));
+            
             command.Parameters.AddWithValue("@ThirdName", Thirdname);
             command.Parameters.AddWithValue("@LastName", Lastname);
             command.Parameters.AddWithValue("@DateOfBirth", BirthDate);
             command.Parameters.AddWithValue("@Gendor", Gendor);
             command.Parameters.AddWithValue("@Address", Address);
             command.Parameters.AddWithValue("@Phone", Phone);
-            command.Parameters.AddWithValue("@Email", Email);
+
+            //Handle Empty String
+            command.Parameters.AddWithValue("@Email", DataSettings.HandleEmptyStrings(Email));
+            
             command.Parameters.AddWithValue("@NationalityCountryID", NationlityCountryID);
-            command.Parameters.AddWithValue("@ImagePath", ImagePath);
+            
+            //Handle Empty String
+            command.Parameters.AddWithValue("@ImagePath", DataSettings.HandleEmptyStrings(ImagePath));
 
             try
             {
@@ -211,7 +234,7 @@ namespace DVLD_DataAccess
 
         public static bool DeletePerson(int ID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"
                             DELETE FROM [dbo].[People]
@@ -235,9 +258,9 @@ namespace DVLD_DataAccess
 
         }
 
-        public static bool IsPersonExsits(int ID)
+        public static bool IsPersonExsit(int ID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"
                             select 1 FROM [dbo].[People]
@@ -260,9 +283,9 @@ namespace DVLD_DataAccess
 
         }
 
-        public static bool IsPersonNatID(string NatID)
+        public static bool IsPersonExsit(string NatID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"
                             select 1 FROM [dbo].[People]
@@ -287,15 +310,23 @@ namespace DVLD_DataAccess
 
         public static DataTable GetPeople()
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             DataTable Peopletable = new DataTable();
 
-            string Query = @"SELECT
-                   PersonID, NationalNo, FirstName, SecondName, 
-                   ThirdName, LastName, DateOfBirth, 
-                   Gendor = case when Gendor = 0 Then 'Male' else 'Female' end,
-                   Address, Phone, Email, NationalityCountryID, ImagePath FROM People ";
+            string Query = @"SELECT People.PersonID, People.NationalNo,
+              People.FirstName, People.SecondName, People.ThirdName, People.LastName,
+			  People.DateOfBirth, People.Gendor,  
+				  CASE
+                  WHEN People.Gendor = 0 THEN 'Male'
+
+                  ELSE 'Female'
+
+                  END as GendorCaption ,
+			  People.Address, People.Phone, People.Email, 
+              People.NationalityCountryID
+              FROM People 
+                ORDER BY People.FirstName";
 
             SqlCommand command = new SqlCommand(Query, connection);
 

@@ -14,10 +14,11 @@ namespace DVLD_Logic
         enum enMode { Add, Update }
         public int ID { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
-        public byte IsActive { get; set; }
-
+        public int PersonID { get; set; }
         public clsPersonLogic Person {  get; set; }
+        public string Password { get; set; }
+        public bool IsActive { get; set; }
+
         private enMode Mode { get; set; }
         public clsUserLogic()
         {
@@ -25,19 +26,20 @@ namespace DVLD_Logic
 
             Username = string.Empty;
             Password = string.Empty;
-            IsActive = 0;
+            IsActive = false;
             this.Person = null;
             Mode = enMode.Add;
         }
 
 
-        private clsUserLogic(int ID, string UserName, string Password, byte IsActive, clsPersonLogic person)
+        private clsUserLogic(int ID, string UserName, string Password, bool IsActive, int PersonID)
         {
             this.ID = ID;
             this.Username = UserName;
             this.Password = Password;
+            this.PersonID = PersonID;
+            this.Person = clsPersonLogic.GetPerson(this.PersonID);
             this.IsActive = IsActive;
-            this.Person = person;
             Mode = enMode.Update;
         }
 
@@ -54,11 +56,10 @@ namespace DVLD_Logic
         }
 
 
-        public bool UpdateUserPassword(string Password)
+        public bool UpdateUserPassword()
         {
-            if (DVLD_DataAccess.clsUserData.UpdateUserPassword(this.ID, Password))
+            if (DVLD_DataAccess.clsUserData.UpdateUserPassword(this.ID, this.Password))
             {
-                this.Password = Password;
                 return true;    
             }
 
@@ -68,26 +69,25 @@ namespace DVLD_Logic
 
         public static clsUserLogic GetUser(int ID)
         {
-            int TempPersonID = 0; // -> due the propartyes are not varibles and u can't pass them by ref
-            string Username = string.Empty; string PassWord = string.Empty; byte IsActive = 0;
-            if (DVLD_DataAccess.clsUserData.GetUserByID(ID, ref TempPersonID, ref Username, ref PassWord, ref IsActive))
+            int PersonID = 0; 
+            string Username = string.Empty; string PassWord = string.Empty; bool IsActive = false;
+            if (DVLD_DataAccess.clsUserData.GetUserByID(ID, ref PersonID, ref Username, ref PassWord, ref IsActive))
             {
-                clsPersonLogic person = clsPersonLogic.GetPerson(TempPersonID);
-                return new clsUserLogic(ID, Username, PassWord, IsActive, person);
+                return new clsUserLogic(ID, Username, PassWord, IsActive, PersonID);
             }
 
             else return null;
         }
 
+
+
         public static clsUserLogic GetUser(string Username)
         {
-            clsPersonLogic person = new clsPersonLogic();
-            int TempPersonID = 0; // -> due the propartyes are not varibles and u can't pass them by ref
-            int ID = 0; string PassWord = string.Empty; byte IsActive = 0; 
-            if (DVLD_DataAccess.clsUserData.GetUserByUsername(ref ID, ref TempPersonID, Username, ref PassWord, ref IsActive))
+            int PersonID = 0;
+            int ID = 0; string PassWord = string.Empty; bool IsActive = false; 
+            if (DVLD_DataAccess.clsUserData.GetUserByUsername(ref ID, ref PersonID, Username, ref PassWord, ref IsActive))
             {
-                person = clsPersonLogic.GetPerson(TempPersonID);
-                return new clsUserLogic(ID, Username, PassWord, IsActive, person);
+                return new clsUserLogic(ID, Username, PassWord, IsActive, PersonID);
             }
 
             else return null;
@@ -107,7 +107,7 @@ namespace DVLD_Logic
 
         public static bool IsUserExsitByID(int ID)
         {
-            return DVLD_DataAccess.clsUserData.IsUserExsits(ID);
+            return DVLD_DataAccess.clsUserData.IsUserExsitsByID(ID);
         }
 
         public static bool IsUserExsitByUserName(string username)

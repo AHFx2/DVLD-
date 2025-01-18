@@ -15,7 +15,7 @@ namespace DVLD_DataAccess
 
         public static DataTable GetAppointments()
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             DataTable ApoinmmetsTable = new DataTable();
             string Query = "select  * from TestAppointments_View";
@@ -41,7 +41,7 @@ namespace DVLD_DataAccess
 
         public static DataTable GetAppointmentInfo(int AppoiID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             DataTable ApoinmmetsTable = new DataTable();
             string Query = "select * from TestAppointments_View where TestAppointments_View.TestAppointmentID = @AppoiID";
@@ -68,7 +68,7 @@ namespace DVLD_DataAccess
         }
         public static int AddAppointment(int testTypeID, int lDLappID, DateTime appoinmentDate, double paidFees, int createduserID, byte isLock, int RetakeTestApplication = 0)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"INSERT INTO [dbo].[TestAppointments]
                                     ([TestTypeID]
@@ -112,7 +112,7 @@ namespace DVLD_DataAccess
 
         public static bool UpdateAppointmentDate(int AppointmentID, DateTime appoinmentDate)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Query = @"
                           Update [dbo].[TestAppointments]
@@ -145,7 +145,7 @@ namespace DVLD_DataAccess
 
             string Query = "select * from TestAppointments where TestAppointments.TestAppointmentID = @Appointment;";
 
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             SqlCommand command = new SqlCommand(Query, connection);
 
@@ -178,7 +178,7 @@ namespace DVLD_DataAccess
         }
         public static bool IsTherePassedApointments(int LDLID, byte TestTypeID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Qerury = @"
                            SELECT   1
@@ -215,7 +215,7 @@ namespace DVLD_DataAccess
 
         public static bool IsThereFailedApointments(int LDLID, byte TestTypeID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Qerury = @"
                            SELECT   1
@@ -251,7 +251,7 @@ namespace DVLD_DataAccess
         }
         public static bool IsThereUnlockedAppointment(int LDLAppID, byte TestTypeID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Qerury = @"select 1  from TestAppointments
                         where TestAppointments.LocalDrivingLicenseApplicationID = @LDLAppID
@@ -285,7 +285,7 @@ namespace DVLD_DataAccess
 
         public static bool IsAppointmentlocked( int AppointmentID, int LDLAppID, byte TestTypeID)
         {
-            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataAccessSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.DataSettings.ConnectionString);
 
             string Qerury = @"select 1  from TestAppointments
                         where TestAppointments.LocalDrivingLicenseApplicationID = @LDLAppID

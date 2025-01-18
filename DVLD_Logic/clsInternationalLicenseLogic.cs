@@ -8,102 +8,177 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
+using DVLD_DataAccess;
 
 namespace DVLD_Logic
 {
-    public class clsInternationalLicenseLogic
+    public class clsInternationalLicenseLogic : clsApplicationLogic
     {
 
+        public enum enMode { AddNew = 0, Update = 1 };
+        public enMode Mode = enMode.AddNew;
 
-        enum enMode { Add }
-        enMode _Mode;
-        public int InterNationalLicenseID { get; set; }
-        public int ApplicaitonID { get; set; }
-        public int DriverID { get; set; }
-        public int IssuedUsingLocalLicenseID { get; set; }
-        public DateTime IssueDate { get; set; }  
-        public DateTime EpirationDate { get; set; }  
-        public byte IsActive { get; set; }
-        public int UserCreateItID { get; set; }
+        public clsDriverLogic DriverInfo;
+        public int InternationalLicenseID { set; get; }
+        public int DriverID { set; get; }
+        public int IssuedUsingLocalLicenseID { set; get; }
+        public DateTime IssueDate { set; get; }
+        public DateTime ExpirationDate { set; get; }
+        public bool IsActive { set; get; }
 
-        public clsInternationalLicenseLogic(int ID, int ApplicationID, int DriverID, int LicenseID, DateTime IssueDate, DateTime EpirationDate, byte IsActive, int UserCreateItID)
-        {
-            this.InterNationalLicenseID = ID;
-            this.ApplicaitonID = ApplicationID;
-            this.DriverID = DriverID;
-            this.IssuedUsingLocalLicenseID = LicenseID;
-            this.IssueDate = IssueDate;
-            this.EpirationDate = EpirationDate;
-            this.IsActive = IsActive;
-            this.UserCreateItID = UserCreateItID;
-
-            // mode gona be update
-        }
 
         public clsInternationalLicenseLogic()
+
         {
-            this.InterNationalLicenseID = -1;
-            this.ApplicaitonID = -1;
-            this.DriverID = DriverID = -1;
+            //here we set the applicaiton type to New International License.
+            this.ApplicationTypeID = (int)clsApplicationLogic.enApplicationType.NewInternationalLicense;
+
+            this.InternationalLicenseID = -1;
+            this.DriverID = -1;
             this.IssuedUsingLocalLicenseID = -1;
-            this.IssueDate = DateTime.MinValue;
-            this.EpirationDate = DateTime.MinValue;
-            this.IsActive = 0;
-            this.UserCreateItID = -1;
+            this.IssueDate = DateTime.Now;
+            this.ExpirationDate = DateTime.Now;
 
-            _Mode = enMode.Add;
-        }
-        
-        public static bool DoseHaveInternationalLicense(int PersonID)
-        {
-            return DVLD_DataAccess.clsInternationalLicense.DoseHaveInternationalLicense(PersonID);
-        }
-        public static bool DoseDriverHaveDemandedLicense(int DriverID)
-        {
-            return DVLD_DataAccess.clsInternationalLicense.DoseDriverHaveDemandedLicense(DriverID);
-        }
-        private bool _AddInternationalLicense()
-        {
-            this.InterNationalLicenseID = DVLD_DataAccess.clsInternationalLicense.AddInternationalLicenseID(this.ApplicaitonID, this.DriverID, this.IssuedUsingLocalLicenseID, this.IssueDate, this.EpirationDate, this.IsActive, this.UserCreateItID);
-            return this.InterNationalLicenseID != -1;
+            this.IsActive = true;
+
+
+            Mode = enMode.AddNew;
+
         }
 
-        public static DataTable GetLicenseByInterNationalLicenseID(int ILID)
+        public clsInternationalLicenseLogic(int ApplicationID, int ApplicantPersonID,
+            DateTime ApplicationDate,
+             enApplicationStatus ApplicationStatus, DateTime LastStatusDate,
+             float PaidFees, int CreatedByUserID,
+             int InternationalLicenseID, int DriverID, int IssuedUsingLocalLicenseID,
+            DateTime IssueDate, DateTime ExpirationDate, bool IsActive)
+
         {
-            return DVLD_DataAccess.clsInternationalLicense.GetLicenseByInterNationalLicenseID(ILID);
+            //this is for the base clase
+            base.ApplicationID = ApplicationID;
+            base.ApplicantPersonID = ApplicantPersonID;
+            base.ApplicationDate = ApplicationDate;
+            base.ApplicationTypeID = (int)clsApplicationLogic.enApplicationType.NewInternationalLicense;
+            base.ApplicationStatus = ApplicationStatus;
+            base.LastStatusDate = LastStatusDate;
+            base.PaidFees = PaidFees;
+            base.CreatedByUserID = CreatedByUserID;
+
+            this.InternationalLicenseID = InternationalLicenseID;
+            this.ApplicationID = ApplicationID;
+            this.DriverID = DriverID;
+            this.IssuedUsingLocalLicenseID = IssuedUsingLocalLicenseID;
+            this.IssueDate = IssueDate;
+            this.ExpirationDate = ExpirationDate;
+            this.IsActive = IsActive;
+            this.CreatedByUserID = CreatedByUserID;
+
+            this.DriverInfo = clsDriverLogic.FindByDriverID(this.DriverID);
+
+            Mode = enMode.Update;
         }
 
-        public static DataTable GetInternationalLicenseHistoryByNatID(string NatID)
+        private bool _AddNewInternationalLicense()
         {
-            return DVLD_DataAccess.clsInternationalLicense.GetInternationalLicenseHistoryByNatID(NatID);
-        }
-                public static DataTable GetInternationalLicenseHistoryByPersonID(int PersonID)
-        {
-            return DVLD_DataAccess.clsInternationalLicense.GetInternationalLicenseHistoryByPersonID(PersonID);
+            //call DataAccess Layer 
+
+            this.InternationalLicenseID =
+                clsInternationalLicenseData.AddNewInternationalLicense(this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID,
+               this.IssueDate, this.ExpirationDate,
+               this.IsActive, this.CreatedByUserID);
+
+
+            return (this.InternationalLicenseID != -1);
         }
 
-        public static DataTable GetInternationalLicenses()
+        private bool _UpdateInternationalLicense()
         {
-            return DVLD_DataAccess.clsInternationalLicense.GetInternationalLicenses();
+            //call DataAccess Layer 
+
+            return clsInternationalLicenseData.UpdateInternationalLicense(
+                this.InternationalLicenseID, this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID,
+               this.IssueDate, this.ExpirationDate,
+               this.IsActive, this.CreatedByUserID);
         }
 
-        public static int GetPersonIDByInternationalID(int InterntionalLicenseID)
+        public static clsInternationalLicenseLogic Find(int InternationalLicenseID)
         {
-            return DVLD_DataAccess.clsInternationalLicense.GetPersonIDByInternationalID(InterntionalLicenseID);
-        }
-        public bool Save()
-        {
-            switch (this._Mode)
+            int ApplicationID = -1;
+            int DriverID = -1; int IssuedUsingLocalLicenseID = -1;
+            DateTime IssueDate = DateTime.Now; DateTime ExpirationDate = DateTime.Now;
+            bool IsActive = true; int CreatedByUserID = 1;
+
+            if (clsInternationalLicenseData.GetInternationalLicenseInfoByID(InternationalLicenseID, ref ApplicationID, ref DriverID,
+                ref IssuedUsingLocalLicenseID,
+            ref IssueDate, ref ExpirationDate, ref IsActive, ref CreatedByUserID))
             {
-                case enMode.Add:
-                    return this._AddInternationalLicense();
+                //now we find the base application
+                clsApplicationLogic Application = clsApplicationLogic.FindBaseApplication(ApplicationID);
 
 
-                default:
-                    return false;
+                return new clsInternationalLicenseLogic(Application.ApplicationID,
+                    Application.ApplicantPersonID,
+                                     Application.ApplicationDate,
+                                    (enApplicationStatus)Application.ApplicationStatus, Application.LastStatusDate,
+                                     Application.PaidFees, Application.CreatedByUserID,
+                                     InternationalLicenseID, DriverID, IssuedUsingLocalLicenseID,
+                                         IssueDate, ExpirationDate, IsActive);
 
             }
+
+            else
+                return null;
+
         }
 
+        public static DataTable GetAllInternationalLicenses()
+        {
+            return clsInternationalLicenseData.GetAllInternationalLicenses();
+
+        }
+
+        public bool Save()
+        {
+
+            //Because of inheritance first we call the save method in the base class,
+            //it will take care of adding all information to the application table.
+            base.Mode = (clsApplicationLogic.enMode)Mode;
+            if (!base.Save())
+                return false;
+
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewInternationalLicense())
+                    {
+
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+
+                    return _UpdateInternationalLicense();
+
+            }
+
+            return false;
+        }
+
+        public static int GetActiveInternationalLicenseIDByDriverID(int DriverID)
+        {
+
+            return clsInternationalLicenseData.GetActiveInternationalLicenseIDByDriverID(DriverID);
+
+        }
+
+        public static DataTable GetDriverInternationalLicenses(int DriverID)
+        {
+            return clsInternationalLicenseData.GetDriverInternationalLicenses(DriverID);
+        }
     }
 }

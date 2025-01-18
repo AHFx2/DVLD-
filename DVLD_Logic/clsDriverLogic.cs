@@ -6,80 +6,129 @@ using System.Security.Cryptography;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using DVLD_DataAccess;
 
 namespace DVLD_Logic
 {
     public class clsDriverLogic
     {
-        enum enMode { Add, Update }
 
-        enMode _Mode;
-        public int ID { get; set; }
-        public int PersonID { get; set; }
-        public int CreatedUserID { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public enum enMode { AddNew = 0, Update = 1 };
+        public enMode Mode = enMode.AddNew;
 
-        public clsDriverLogic(int ID, int PersonID, int CreatdUserID, DateTime CreatedDate)
-        {
-            this.ID = ID;
-            this.PersonID = PersonID;
-            this.CreatedUserID = CreatdUserID;
-            this.CreatedDate = CreatedDate;
+        public clsPersonLogic PersonInfo;
 
-            _Mode = enMode.Update;
-        }
-
+        public int DriverID { set; get; }
+        public int PersonID { set; get; }
+        public int CreatedByUserID { set; get; }
+        public DateTime CreatedDate { get; }
 
         public clsDriverLogic()
+
         {
-            this.ID = -1;
+            this.DriverID = -1;
             this.PersonID = -1;
-            this.CreatedUserID = -1;
-            this.CreatedDate = DateTime.MinValue;
+            this.CreatedByUserID = -1;
+            this.CreatedDate = DateTime.Now;
+            Mode = enMode.AddNew;
 
-            _Mode = enMode.Add;
         }
 
+        public clsDriverLogic(int DriverID, int PersonID, int CreatedByUserID, DateTime CreatedDate)
 
-        private bool _AddDriver()
         {
-            this.ID = DVLD_DataAccess.clsDriver.AddDriver(this.PersonID, this.CreatedUserID, this.CreatedDate);
-            return this.ID != -1;
+            this.DriverID = DriverID;
+            this.PersonID = PersonID;
+            this.CreatedByUserID = CreatedByUserID;
+            this.CreatedDate = CreatedDate;
+            this.PersonInfo = clsPersonLogic.GetPerson(PersonID);
+
+            Mode = enMode.Update;
         }
 
-        public static bool IsPersonDriver(int PersonID)
+        private bool _AddNewDriver()
         {
-            return DVLD_DataAccess.clsDriver.IsPersonDriver(PersonID);
+            //call DataAccess Layer 
+
+            this.DriverID = clsDriverData.AddNewDriver(PersonID, CreatedByUserID);
+
+
+            return (this.DriverID != -1);
         }
 
-        public static clsDriverLogic GetDriverByPersonID(int PersonID)
+        private bool _UpdateDriver()
         {
-            int DriverID = 0, UserCreateIT = 0; 
-            DateTime CreatedDate  = DateTime.MinValue;
+            //call DataAccess Layer 
 
-            if (DVLD_DataAccess.clsDriver.GetDriverByPersonID(ref DriverID, PersonID, ref UserCreateIT, ref CreatedDate))
-            {
-                return new clsDriverLogic(DriverID, PersonID, UserCreateIT, CreatedDate);
-            }
+            return clsDriverData.UpdateDriver(this.DriverID, this.PersonID, this.CreatedByUserID);
+        }
 
+        public static clsDriverLogic FindByDriverID(int DriverID)
+        {
+
+            int PersonID = -1; int CreatedByUserID = -1; DateTime CreatedDate = DateTime.Now;
+
+            if (clsDriverData.GetDriverInfoByDriverID(DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate))
+
+                return new clsDriverLogic(DriverID, PersonID, CreatedByUserID, CreatedDate);
             else
                 return null;
+
         }
 
-        public static DataTable GetDrivers()
+        public static clsDriverLogic FindByPersonID(int PersonID)
         {
-            return DVLD_DataAccess.clsDriver.GetDrivers();
+
+            int DriverID = -1; int CreatedByUserID = -1; DateTime CreatedDate = DateTime.Now;
+
+            if (clsDriverData.GetDriverInfoByPersonID(PersonID, ref DriverID, ref CreatedByUserID, ref CreatedDate))
+
+                return new clsDriverLogic(DriverID, PersonID, CreatedByUserID, CreatedDate);
+            else
+                return null;
+
         }
+
+        public static DataTable GetAllDrivers()
+        {
+            return clsDriverData.GetAllDrivers();
+
+        }
+
         public bool Save()
         {
-            switch (_Mode) {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewDriver())
+                    {
 
-                case enMode.Add:
-                    return _AddDriver();
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
 
-                default:
-                    return false;
+                case enMode.Update:
+
+                    return _UpdateDriver();
+
             }
-        } 
+
+            return false;
+        }
+
+        public static DataTable GetLicenses(int DriverID)
+        {
+            return clsLicenseLogic.GetDriverLicenses(DriverID);
+        }
+
+        public static DataTable GetInternationalLicenses(int DriverID)
+        {
+            return clsInternationalLicenseData.GetDriverInternationalLicenses(DriverID);
+        }
+
     }
 }
