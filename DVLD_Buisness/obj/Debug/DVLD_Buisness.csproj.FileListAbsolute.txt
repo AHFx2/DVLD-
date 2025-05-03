@@ -34,3 +34,13 @@ F:\coding\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Buisness.csproj.Co
 F:\coding\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Bui.E5CEC4E3.Up2Date
 F:\coding\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Buisness.dll
 F:\coding\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Buisness.pdb
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\bin\Debug\DVLD_Buisness.dll
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\bin\Debug\DVLD_Buisness.pdb
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\bin\Debug\DVLD_DataAccess.dll
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\bin\Debug\DVLD_DataAccess.pdb
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\bin\Debug\DVLD_DataAccess.dll.config
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Buisness.csproj.AssemblyReference.cache
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Buisness.csproj.CoreCompileInputs.cache
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Bui.E5CEC4E3.Up2Date
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Buisness.dll
+F:\Projects\DVLD\DVLDRepo\DVLD_Buisness\obj\Debug\DVLD_Buisness.pdb

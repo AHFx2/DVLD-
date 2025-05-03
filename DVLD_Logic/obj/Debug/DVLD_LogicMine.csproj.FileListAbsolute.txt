@@ -7,3 +7,12 @@ F:\coding\Projects\DVLD\DVLDRepo\DVLD_Logic\bin\Debug\DVLD_Logic.pdb
 F:\coding\Projects\DVLD\DVLDRepo\DVLD_Logic\bin\Debug\ClassLibrary1.dll
 F:\coding\Projects\DVLD\DVLDRepo\DVLD_Logic\bin\Debug\ClassLibrary1.pdb
 F:\coding\Projects\DVLD\DVLDRepo\DVLD_Logic\obj\Debug\DVLD_Log.302371AE.Up2Date
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\bin\Debug\DVLD_Logic.dll
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\bin\Debug\DVLD_Logic.pdb
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\bin\Debug\ClassLibrary1.dll
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\bin\Debug\ClassLibrary1.pdb
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\obj\Debug\DVLD_LogicMine.csproj.AssemblyReference.cache
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\obj\Debug\DVLD_LogicMine.csproj.CoreCompileInputs.cache
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\obj\Debug\DVLD_Log.302371AE.Up2Date
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\obj\Debug\DVLD_Logic.dll
+F:\Projects\DVLD\DVLDRepo\DVLD_Logic\obj\Debug\DVLD_Logic.pdb
